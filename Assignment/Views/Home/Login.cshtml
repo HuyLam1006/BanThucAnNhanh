@@ -1,0 +1,49 @@
+﻿@model Assignment.Models.ViewModels.ViewWebLogin
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<style>
+
+
+    body {
+        background-color: white;
+    }
+
+
+    .ml-1{
+        text-decoration:none;
+        color:red;
+    }
+        .ml-1:hover {
+            text-decoration: none;
+            font-weight: bold;
+            color: red;
+        }
+</style>
+
+<div class="text-danger" asp-validation-summary="All"></div>
+<div class="row mt-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin ctn-dn shadow-lg">
+            <div class="card-body">
+                <h2 class="card-title text-center font-weight-bold">Đăng Nhập</h2>
+                <form asp-action="Login" method="post" class="form-signin">
+                    <input type="hidden" asp-for="ReturnUrl" />
+                    <div class="form-label-group">
+                        <label asp-for="Email">Tên tài khoản</label>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="form-label-group mt-3">
+                        <label asp-for="Password">Mật khẩu</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password" />
+                    </div>
+                    <div class="form-label-group mt-3">
+                        <p style="display:inline-block;" href="#" class="sm-text mx-auto mb-3">Bạn chưa có tài khoảng?<a href="/Home/Register" class="ml-1">Đăng ký</a></p>
+                    </div>
+                    <button class="btn font-weight-bold btn-lg btn-info btn-block text-uppercase " type="submit" href="javascript:Login();">Đăng nhập</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+﻿@model Assignment.Models.Khachhang
+
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<style>
+
+    body {
+        background-color: white;
+    }
+
+
+    .card {
+ 
+        border-radius: 8px;
+        border: none
+    }
+
+    .card2 {
+
+        width: 60%;
+        padding: 40px 30px 10px 30px
+    }
+
+    .card1 {
+
+        width: 40%;
+        background-image: linear-gradient(to right, #FFD54F, #D500F9)
+    }
+</style>
+
+<div class="container  px-4 py-5 mx-auto">
+    <div class="card card0 shadow-lg shadow box-shadow">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                    <h3 class="text-white">Bạn đã có tài khoảng?</h3>
+                    <button class="text-center btn btn-lg btn-warning btn-block text-uppercase font-weight-bold mt-3">Đăng nhập</button>
+                </div>
+            </div>
+            <div class="card card2">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-10 col-10 my-5">
+                        <div class="card-body">
+                            <h2 class="card-title text-center font-weight-bold text-uppercase">Đăng ký</h2>
+                            <div class="col-md-12">
+                                <form asp-action="Register" class="form-signin">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <div class="form-label-group">
+                                        <label for="inputUserame" asp-for="FullName" class="control-label"></label>
+                                        <input type="text" id="inputUserame" asp-for="FullName" class="form-control" />
+                                        <span asp-validation-for="FullName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="Ngaysinh" class="control-label"></label>
+                                        <input asp-for="Ngaysinh" class="form-control" />
+                                        <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="PhoneNumber" class="control-label"></label>
+                                        <input asp-for="PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="Address" class="control-label"></label>
+                                        <input asp-for="Address" class="form-control" />
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="Password" class="control-label"></label>
+                                        <input asp-for="Password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="ConfirmPassword" class="control-label"></label>
+                                        <input asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-3">
+                                        <label asp-for="Mota" class="control-label"></label>
+                                        <input asp-for="Mota" class="form-control" />
+                                        <span asp-validation-for="Mota" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-label-group mt-4">
+                                        <input type="submit" value="Đăng ký" class="text-center font-weight-bold btn btn-lg btn-info btn-block text-uppercase" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <div>
+            <a class="text-decoration-none adesi" asp-action="Index">Trở về trang chủ</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

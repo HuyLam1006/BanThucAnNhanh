@@ -1,0 +1,72 @@
+﻿@model Assignment.Models.MonAn
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6 mx-auto">
+            <div class="card card-signin flex-row shadow-lg card-signup">
+                <div class="card-body">
+                    <h2 class="card-title text-center font-weight-bold text-uppercase">chỉnh sửa món ăn</h2>
+                    <div class="col-md-12">
+                        <form asp-action="Edit" class="form-signin">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="MonAnID" />
+                            <div class="form-label-group">
+                                <label asp-for="Name" class="control-label"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Gia" class="control-label"></label>
+                                <input asp-for="Gia" class="form-control" />
+                                <span asp-validation-for="Gia" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Phanloai" class="control-label"></label>
+                                <select asp-for="Phanloai" class="form-control" asp-items="Html.GetEnumSelectList<Phanloai>()">
+                                    <option value="0">Select type ...</option>
+                                </select>
+                                <span asp-validation-for="Phanloai" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <img src="~/images/Monan/@Model.Hinh" style="height:100px" />
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="ImageFile" class="control-label"></label>
+                                <input asp-for="ImageFile" class="form-control" type="file" />
+                            </div>
+                            <div class="form-label-group mt-3" style="display:none">
+                                <label asp-for="Hinh" class="control-label"></label>
+                                <input asp-for="Hinh" class="form-control" />
+                                <span asp-validation-for="Hinh" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Mota" class="control-label"></label>
+                                <input asp-for="Mota" class="form-control" />
+                                <span asp-validation-for="Mota" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3 form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="Trangthai" /> @Html.DisplayNameFor(model => model.Trangthai)
+                                </label>
+                            </div>
+                            <div class="form-label-group mt-4">
+                                <input type="submit" value="Lưu" class="text-center btn btn-lg btn-success btn-block text-uppercase" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                <div>
+                    <a class="text-decoration-none adesi" asp-action="Index">Trở về món ăn</a>
+                </div>
+
+                @section Scripts {
+                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                }

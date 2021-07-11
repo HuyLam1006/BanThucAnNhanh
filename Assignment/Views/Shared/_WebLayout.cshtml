@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kentucky Fried Chicken</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            /*  -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;*/
+            /*       background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;*/
+            /*                   background-size: cover;
+            background-repeat: repeat;*/
+            /*  background-image: url("/wwwroot/images/white-brick-wall.jpg");*/
+            /* background: url("/wwwroot/images/white-brick-wall.jpg") center top no-repeat;*/
+            background-color: #e4002b;
+        }
+        .h1-cl {
+            display: inline-block;
+            font: bold 4.5em/1.5 Bebas, sans-serif;
+            color: #5CA17C;/* non-webkit fallback*/
+            font-size: 72px;
+            background-image: linear-gradient(to bottom,#334d50, #cbcaa5, #ff512f, #dd2476 );
+            background-size: auto 250%;
+            transition: background-position 0.5s;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 80px;
+            background-position: 0 100%;
+        }
+        .h1-cl:hover {
+            background-position: 0 0;
+            cursor: pointer;
+        }
+
+        .kesoc-ctn {
+            background-color: white;
+        }
+        .kesoc {
+            background-color: white;
+            width: 20rem;
+            height: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .kesoc .row {
+                height: 100%;
+            }
+
+            .kesoc .col:nth-child(odd) {
+                height: 100%;
+                background-color: #e4002b;
+            }
+
+        .stl-usr {
+            color: white;
+        }
+
+            .stl-usr:hover {
+                color: #fff200;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="kesoc-ctn">
+            <div class="kesoc pc">
+                <div class="row no-gutters">
+                    <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/kfc/Logo-KFC.png" style="width:50px;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_WebLoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        @*<partial name="_MenuPartial" />*@
+
+                        @*<li class="nav-item">
+                                <a id="naitem" class="nav-link font-weight-bold" asp-area="" asp-controller="Nguoidung" asp-action="Index">Quản trị</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="naitem" class="nav-link font-weight-bold" asp-area="" asp-controller="MonAn" asp-action="Index">Món ăn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="naitem" class="nav-link font-weight-bold" asp-area="" asp-controller="Donhang" asp-action="Index">Đơn hàng</a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="naitem" class="nav-link font-weight-bold" asp-area="" asp-controller="Khachhang" asp-action="Index">Khách hàng</a>
+                            </li>*@
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2021 - Assignment - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+<script>
+    function Login() {
+        alert("hello");
+    }
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+</body>
+</html>

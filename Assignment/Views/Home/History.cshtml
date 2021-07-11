@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Assignment.Models.Donhang>
+
+@{
+    //ViewData["Title"] = "History";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+
+<center><h2 class="font-weight-bold text-danger text-uppercase">Lịch Sử Đặt Hàng</h2></center>
+
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<table class="table table-bordered table-hover table-success table-striped">
+    <thead class="text-center badge-success">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngaydat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tongtien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangthaiDonhang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ghichu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Khachhang)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaydat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tongtien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangthaiDonhang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ghichu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Khachhang.Address)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.DonhangID">Edit</a> |*@
+                    <a class="text-decoration-none adesi" asp-action="Details" asp-route-id="@item.DonhangID">Chi tiết</a> @*|*@
+                    @*<a asp-action="Delete" asp-route-id="@item.DonhangID">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" class="text-decoration-none adesi">Trở về trang chủ</a>
+</div>

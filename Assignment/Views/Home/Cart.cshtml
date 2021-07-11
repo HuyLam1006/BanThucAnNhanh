@@ -1,0 +1,175 @@
+﻿@using Assignment
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Assignment.Constants
+
+@model IEnumerable<Assignment.Models.ViewModels.ViewCart>;
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@{ string Email = Context.Session.GetString(SessionKey.Khachhang.KH_Email);}
+@{ string fullName = Context.Session.GetString(SessionKey.Khachhang.KH_FullName);}
+
+<style>
+    body{
+        background-color: white;
+    }
+    .viewProduct, .addProduct {
+        border: 0;
+        font-weight: 700;
+        padding: 9px 5px;
+        background: #ffd800;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        display: block;
+        width: 186px;
+        margin: 0 auto;
+        color: #0e0e0e;
+        text-align: center
+    }
+</style>
+<center><h2 class="font-weight-bold text-danger text-uppercase" >Giỏ Hàng</h2></center>
+
+<table class="table table-bordered table-hover table-success table-striped">
+    <thead class="text-center badge-success">
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Hình ảnh</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Tổng</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int stt = 0;
+            double total = 0;
+            foreach (var item in Model)
+            {
+                int iD = @item.MonAn.MonAnID;
+                string txt_Id = "txtQuantity_" + iD;
+                stt++;
+                double totalSub = item.MonAn.Gia * item.Quantity;
+                total += totalSub;
+                <tr id="tr_@iD">
+                    <td>
+                        @stt
+                    </td>
+                    <td>
+                        @item.MonAn.Name
+                    </td>
+                    <td>
+                        <img src="~/images/monan/@item.MonAn.Hinh" style="width:150px" />
+                    </td>
+                    <td><input type="number" id="@txt_Id" value="@item.Quantity" /></td>
+                    <td id="tdGia_@iD">@item.MonAn.Gia</td>
+                    <td id="tdTien_@iD">@totalSub</td>
+                    <td>
+                        <a class="text-decoration-none adesi" href="javascript:updateCart(@iD);">Cập nhật</a> |
+                        <a class="text-decoration-none adesi" href="javascript:delCart(@iD);">Xóa</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+</table>
+<p>
+    <div class="font-weight-bold">Tổng tiền: <span id="spTotal" class="text-danger">@total</span> VNĐ</div>
+</p>
+<p>
+    @if (Email != null && Email != "")
+    {
+        <a class="addProduct text-decoration-none adesi" href="javascript:orderCart(true);">Đặt hàng</a>
+    }
+    else
+    {
+        <a class="addProduct text-decoration-none adesi" href="javascript:orderCart(false);">Đặt hàng</a>
+        <span>Bạn cần <a href="/Home/Login" class="text-decoration-none adesi" style="">đăng nhập</a> để đặt hàng</span>
+    }
+</p>
+<script>
+    function delCart(id) {
+        $.ajax({
+            type: "POST",
+            url: "/Home/DeleteCart",
+            data: {
+                id: id,
+            },
+            success: function (result) {
+                $("#tr_" + id).hide();
+                $("#spTotal").html(result);
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Xóa thành công',
+                    showConfirmButton: false,
+                    timer: 150000
+                })
+                /*alert("Xóa thành công");*/
+                if (result == "0") {
+                    $("#imgCart").attr("src", '/images/MonAn/cart02.png');
+                }
+            }
+        });
+    }
+    function formatCash(str) {
+        return str.split('').reverse().reduce((prev, next, index) => {
+            return ((index % 3) ? next : (next + ',')) + prev
+        })
+    }
+    console.log(formatCash('1234567890')) // 1,234,567,890
+
+    function updateCart(id) {
+        var soluong = $("#txtQuantity_" + id).val();
+        var gia = $("#tdGia_" + id).html();
+        var thanhtien = soluong * gia;
+        $("#tdTien_" + id).html(formatCash(thanhtien.toString()) + " VNĐ");
+
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/UpdateCart",
+            data: {
+                id: id,
+                soluong: soluong
+            },
+            success: function (result) {
+                result = formatCash(result.toString());
+                $("#spTotal").html(result);
+                if (result == "0") {
+                    $("#imgCart").attr("src", '/images/MonAn/cart02.png');
+                }
+            }
+        });
+    }
+
+    function orderCart(flagLogin) {
+        if (!flagLogin) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Bạn cần đăng nhập để đặt hàng.',
+                showConfirmButton: true,
+                timer: 150000
+            })
+            return false;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/OrderCart",
+            data: {
+            },
+            success: function (result) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Đặt hàng thành thành công!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                window.location = "/Home/History";
+            }
+        });
+    }
+</script>

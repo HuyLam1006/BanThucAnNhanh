@@ -1,0 +1,58 @@
+﻿@model Assignment.Models.Donhang
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6 mx-auto">
+            <div class="card card-signin flex-row shadow-lg card-signup">
+                <div class="card-body">
+                    <h2 class="card-title text-center font-weight-bold text-uppercase">chỉnh sửa đơn hàng</h2>
+                    <div class="col-md-12">
+                        <form asp-action="Edit"  class="form-signin">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="DonhangID" />
+                            <div class="form-label-group">
+                                <label asp-for="KhachhangID" class="control-label"></label>
+                                <select asp-for="KhachhangID" class="form-control" asp-items="ViewBag.KhachhangID"></select>
+                                <span asp-validation-for="KhachhangID" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Ngaydat" class="control-label"></label>
+                                <input asp-for="Ngaydat" class="form-control" />
+                                <span asp-validation-for="Ngaydat" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Tongtien" class="control-label"></label>
+                                <input asp-for="Tongtien" class="form-control" />
+                                <span asp-validation-for="Tongtien" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="TrangthaiDonhang" class="control-label"></label>
+                                <select asp-for="TrangthaiDonhang" class="form-control"></select>
+                                <span asp-validation-for="TrangthaiDonhang" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Ghichu" class="control-label"></label>
+                                <input asp-for="Ghichu" class="form-control" />
+                                <span asp-validation-for="Ghichu" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <input type="submit" value="Lưu" class="text-center btn btn-lg btn-success btn-block text-uppercase" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                <div>
+                    <a class="text-decoration-none adesi" asp-action="Index">Trở về đơn hàng</a>
+                </div>
+
+                @section Scripts {
+                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                }

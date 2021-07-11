@@ -1,0 +1,67 @@
+﻿@using Assignment.Models
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Assignment.Constants
+
+@{string userName = Context.Session.GetString(SessionKey.Nguoidung.UserName);}
+
+<style>
+    
+    .btn-a {
+        width: 200px;
+        left: 50%;
+        margin: auto;
+        padding: 10px;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+    }
+
+        .btn-a:hover {
+            border: none;
+            text-decoration: none;
+            color: white;
+        }
+
+    .btn-rg {
+        width: 13%;
+        display: block;
+        background-color: white;
+    }
+
+        .btn-rg:hover {
+            border: none;
+            border-radius: 5px;
+            background-color: #e4002b;
+        }
+        .txt-a{
+            margin-left: 8%;
+        }
+    .txt-b {
+        margin-left: 10%;
+    }
+    .txt-c {
+        margin-left: 5%;
+    }
+    .txt-d {
+        margin-left: -3%;
+    }
+</style>
+
+@if (userName != null && userName != "")
+{
+            <li class="nav-item btn-rg">
+                <a class="btn-a txt-a" asp-area="" asp-controller="Nguoidung" asp-action="Index">Quản Trị</a>
+            </li>
+            <li class="nav-item btn-rg">
+                <a class="btn-a txt-b" asp-area="" asp-controller="MonAn" asp-action="Index">Món Ăn</a>
+            </li>
+            <li class="nav-item btn-rg">
+                <a class="btn-a txt-c" asp-area="" asp-controller="Donhang" asp-action="Index">Đơn Hàng</a>
+            </li>
+            <li class="nav-item btn-rg">
+                <a class="btn-a txt-d" asp-area="" asp-controller="Khachhang" asp-action="Index">Khách Hàng</a>
+            </li>
+} 

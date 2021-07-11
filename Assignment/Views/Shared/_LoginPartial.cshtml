@@ -1,0 +1,134 @@
+﻿@using Assignment.Models
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Assignment.Constants
+
+@{string userName = Context.Session.GetString(SessionKey.Nguoidung.UserName);}
+@{string fullName = Context.Session.GetString(SessionKey.Nguoidung.FullName);}
+
+<style>
+    button {
+        border: none;
+        background-color: white;
+    }
+
+        button:hover {
+            border-radius: 5px;
+            border: none;
+            background-color: #e4002b;
+        }
+
+    .btn-txt {
+        padding: 2%;
+        width: 160px;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+    }
+
+        .btn-txt:hover {
+            color: black;
+            text-decoration: none;
+        }
+
+    .btn-a {
+        width: 110px;
+        margin: auto;
+        padding: 10%;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+    }
+
+        .btn-a:hover {
+            border: none;
+            text-decoration: none;
+            color: white;
+        }
+
+    .btn-rg {
+        width: 100%;
+        display: block;
+        background-color: white;
+    }
+
+        .btn-rg:hover {
+            border: none;
+            border-radius: 5px;
+            background-color: #e4002b;
+        }
+
+    .btn-dky {
+        margin-left: 10%;
+    }
+
+    .btn-hang {
+        margin-left: 5%;
+    }
+    .btn-aout {
+        width: 110px;
+        margin: auto;
+        padding: 10%;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+    }
+    .btn-aout:hover {
+        border: none;
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn-lga {
+        width: 100%;
+        display: block;
+        background-color: white;
+    }
+        .btn-lga:hover {
+            border: none;
+            border-radius: 5px;
+            background-color: #e4002b;
+        }
+    .btn-lgb {
+        width: 110px;
+        margin: auto;
+        padding: 10%;
+        border: none;
+        display: inline-block;
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+    }
+        .btn-lgb:hover {
+            border: none;
+            text-decoration: none;
+            color: white;
+        }
+</style>
+
+<ul class="navbar-nav">
+    @if (userName != null && userName != "")
+    {
+        <li class="nav-item">
+            <a id="manage" class="btn-txt">Xin chào <div class="font-weight-bold text-danger" style="display:inline-block;">@fullName</div> !</a>
+        </li>
+        <li class="nav-item">
+            <form asp-area="" asp-controller="Admin" asp-action="Logout" method="post" id="logoutForm">
+                <button id="logout" type="submit" class="btn-aout">Đăng Xuất</button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item btn-lga">
+            <a class="btn-lgb" id="login" href="/Admin/Login">Đăng Nhập</a>
+        </li>
+    }
+</ul>
+

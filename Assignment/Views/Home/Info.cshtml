@@ -1,0 +1,81 @@
+﻿@model Assignment.Models.Khachhang
+
+@{
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xl-6 mx-auto">
+            <div class="card card-signin flex-row shadow-lg card-signup">
+                <div class="card-body">
+                    <h2 class="card-title text-center font-weight-bold text-uppercase">Thông Tin Khách Hàng</h2>
+                    <div class="col-md-12">
+                        <form asp-action="Info" class="form-signin">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="KhachhangID" />
+                            <div class="form-label-group">
+                                <label asp-for="FullName" class="control-label"></label>
+                                <input asp-for="FullName" class="form-control" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Ngaysinh" class="control-label"></label>
+                                <input asp-for="Ngaysinh" class="form-control" />
+                                <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="PhoneNumber" class="control-label"></label>
+                                <input asp-for="PhoneNumber" class="form-control" />
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" readonly />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Address" class="control-label"></label>
+                                <input asp-for="Address" class="form-control" />
+                                <span asp-validation-for="Address" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="ConfirmPassword" class="control-label"></label>
+                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-3">
+                                <label asp-for="Mota" class="control-label"></label>
+                                <input asp-for="Mota" class="form-control" />
+                                <span asp-validation-for="Mota" class="text-danger"></span>
+                            </div>
+                            <div class="form-label-group mt-4">
+                                <input type="submit" value="Lưu" class="text-center btn btn-lg btn-success btn-block text-uppercase" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="text-decoration-none adesi">Trở về trang chủ</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

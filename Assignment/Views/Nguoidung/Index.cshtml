@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Assignment.Models.Nguoidung>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="font-weight-bold text-danger text-uppercase">Người Dùng</h2>
+
+<p>
+    <a class="text-decoration-none adesi" asp-action="Create">Tạo Người Dùng Mới</a>
+</p>
+<table class="table table-bordered table-hover table-info table-striped">
+    <thead class="text-center badge-info">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locked)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>*@
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Admin)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Locked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>*@
+            <td>
+                <a class="text-decoration-none adesi" asp-action="Edit" asp-route-id="@item.NguoidungID">Chỉnh sửa</a> |
+                <a class="text-decoration-none adesi" asp-action="Details" asp-route-id="@item.NguoidungID">Chi tiết</a>
+                @*<a asp-action="Delete" asp-route-id="@item.NguoidungID">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

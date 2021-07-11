@@ -1,0 +1,99 @@
+﻿@model Assignment.Models.Nguoidung
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+
+    dl {
+        border: 3px double #ccc;
+        padding: 0.5em;
+        display: flex;
+        flex-flow: row wrap;
+        border: solid #333;
+    }
+
+    dt {
+        flex-basis: 20%;
+        padding: 2px 4px;
+        background: #333;
+        text-align: right;
+        color: #fff;
+        float: left;
+        clear: left;
+    }
+
+        dt::after {
+            content: ":";
+        }
+
+    dd {
+        flex-basis: 70%;
+        flex-grow: 1;
+        margin: 0;
+        padding: 2px 4px;
+        border-bottom: 1px solid #333;
+        padding: 0 0 0.5em 0;
+    }
+</style>
+
+
+<div>
+    <center><h2 class="font-weight-bold text-danger text-uppercase">Chi tiết người dùng</h2></center>
+
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Locked)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Locked)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="text-decoration-none adesi" asp-action="Edit" asp-route-id="@Model.NguoidungID">Chỉnh sửa</a> |
+    <a class="text-decoration-none adesi" asp-action="Index">Trở về người dùng</a>
+</div>
